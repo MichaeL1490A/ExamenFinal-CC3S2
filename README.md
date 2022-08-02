@@ -7,8 +7,8 @@ hemos tenido al estudiar. A quien no le ha pasado que quieres
 volver a repasar algo y tienes que volver a leer todo, o quieres
 saber si has entendido bien algo que has estudiado y no tienes
 como evaluarte, haciendo complicado identificar qué temas debes
-reforzar más. Debido a estos problemas y a otros que se tengan
-al estudiar pero que no hemos mencionado es que nosotros creamos 
+reforzar más. Por estos problemas y otros que se tengan
+al estudiar pero que no se han mencionado es que creamos 
 FlashCards. FlashCards es una aplicación que te permite poner tus
 apuntes como ejercicios para que puedas reforzar tus conocimientos
 en cualquier momento, también permite que te puedas evaluar
@@ -28,6 +28,11 @@ Ser el mejor método de estudio y el más conocido del mundo.
 ### Misión
 
 Crear métodos de estudio que sean útiles y fáciles para todas las personas que quieran aprender algo nuevo
+
+
+### Instalación
+
+Para poder correr el programa debes tener instalado java.
 
 
 
