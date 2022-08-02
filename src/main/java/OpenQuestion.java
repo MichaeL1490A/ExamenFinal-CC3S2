@@ -2,17 +2,18 @@ import java.util.Scanner;
 
 public class OpenQuestion implements Question {
     public String Question;
-    public String CorrectAnswer;
-    public Scanner input = new Scanner(System.in);
+    public String Answers;
+
     public OpenQuestion(String Question, String CorrectAnswer){
         this.Question = Question;
-        this.CorrectAnswer = CorrectAnswer;
+        this.Answers = CorrectAnswer;
     }
     @Override
     public void Ask(){
+        Scanner input = new Scanner(System.in);
         System.out.println(Question);
         String Answer = input.nextLine();
-        if(Answer == CorrectAnswer){
+        if(Answer == Answers){
             System.out.println("Correcto");
         }
         else{

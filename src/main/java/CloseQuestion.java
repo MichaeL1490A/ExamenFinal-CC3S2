@@ -3,18 +3,17 @@ import java.util.Scanner;
 
 public class CloseQuestion implements Question {
     public String Question;
-    public String[] CorrectAnswer;
-    public Scanner input = new Scanner(System.in);
+    public String[] Answers;
     public CloseQuestion(String Question, String[] CorrectAnswer){
         this.Question = Question;
-        this.CorrectAnswer = CorrectAnswer;
+        this.Answers = CorrectAnswer;
     }
-    public CloseQuestion(){}
     @Override
     public void Ask(){
+        Scanner input = new Scanner(System.in);
         System.out.println(Question);
         String Answer = input.nextLine();
-        if(Objects.equals(Answer, CorrectAnswer[0])){
+        if(Objects.equals(Answer, Answers[0])){
             System.out.println("Correcto");
         }
         else{

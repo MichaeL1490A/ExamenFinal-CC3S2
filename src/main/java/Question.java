@@ -3,6 +3,7 @@ public interface Question {
 }
 
 /*
+
 class Main {
     public static void main(String[] args) {
 
@@ -17,5 +18,4 @@ class Main {
         }
     }
 }
-
  */
