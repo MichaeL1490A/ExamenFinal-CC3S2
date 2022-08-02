@@ -9,7 +9,7 @@ public class CloseQuestion implements Question {
         this.Answers = CorrectAnswer;
     }
     @Override
-    public void Ask(){
+    public void ask(){
         Scanner input = new Scanner(System.in);
         System.out.println(Question);
         String Answer = input.nextLine();
@@ -19,6 +19,11 @@ public class CloseQuestion implements Question {
         else{
             System.out.println("Incorrecto");
         }
+    }
+    @Override
+    public void show(){
+        System.out.println(Question);
+        System.out.println(Answers[0]);
     }
 }
 /*
