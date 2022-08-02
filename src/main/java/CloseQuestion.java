@@ -1,7 +1,7 @@
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CloseQuestion {
+public class CloseQuestion implements Question {
     public String Question;
     public String[] CorrectAnswer;
     public Scanner input = new Scanner(System.in);
@@ -9,6 +9,8 @@ public class CloseQuestion {
         this.Question = Question;
         this.CorrectAnswer = CorrectAnswer;
     }
+    public CloseQuestion(){}
+    @Override
     public void Ask(){
         System.out.println(Question);
         String Answer = input.nextLine();

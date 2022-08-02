@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class OpenQuestion {
+public class OpenQuestion implements Question {
     public String Question;
     public String CorrectAnswer;
     public Scanner input = new Scanner(System.in);
@@ -8,6 +8,7 @@ public class OpenQuestion {
         this.Question = Question;
         this.CorrectAnswer = CorrectAnswer;
     }
+    @Override
     public void Ask(){
         System.out.println(Question);
         String Answer = input.nextLine();
