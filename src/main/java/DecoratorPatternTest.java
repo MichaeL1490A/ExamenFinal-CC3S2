@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.List;
 
-public interface Quizzes {
+interface Quizzes {
     List<Deck> randomize();
     void addDeck(Deck d);
     void deleteDeck(Deck d);
@@ -83,4 +83,4 @@ public class DecoratorPatternTest{
         System.out.println(quizz.getPrueba());
     }
 }
- */
+*/
