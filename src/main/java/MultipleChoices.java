@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 public class MultipleChoices extends Answer{
-    private ArrayList<String> IncorrectAnswers;
+    private ArrayList<String> incorrectAnswers;
     public MultipleChoices(String correctAnswers, ArrayList<String> incorrectAnswers){
         this.correctAnswer = correctAnswers;
-        this.IncorrectAnswers = incorrectAnswers;
+        this.incorrectAnswers = incorrectAnswers;
     }
     public ArrayList<String> getIncorrectAnswers(){
-        return IncorrectAnswers;
+        return incorrectAnswers;
     }
 }
