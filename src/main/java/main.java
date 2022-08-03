@@ -14,11 +14,6 @@ class WordFlashcardBuilder implements IFlashcard {
     }
 
     @Override
-    public boolean isCorrect() {
-        return false;
-    }
-
-    @Override
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
@@ -33,11 +28,6 @@ class mcFlashcardBuilder implements IFlashcard{
     @Override
     public void setQuestion(Question question) {
         this.question = question;
-    }
-
-    @Override
-    public boolean isCorrect() {
-        return false;
     }
     @Override
     public void setAnswer(Answer answer) {
@@ -80,14 +70,8 @@ public class main{
     public static void main(String[] args){
         Director director = new Director();
 
-        mcFlashcard mcflashcard = new mcFlashcard();
+        mcFlashcardBuilder mcflashcard = new mcFlashcardBuilder();
         director.constructMCFlashcard(mcflashcard);
-
-        WordFlashcard wordFlashcard = new WordFlashcard();
-        director.constructWordlashcard(wordFlashcard);
-        Answer answer = new Word("2");
-        Question question = new Question("Cuanto es 1+1");
-        wordFlashcard.setAnswer(answer);
-        wordFlashcard.setQuestion(question);
+        Flashcard flashcard = mcflashcard.getResult();
     }
 }
