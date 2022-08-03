@@ -13,6 +13,7 @@ public abstract class Answer {
 
 class MultipleChoices extends Answer{
     private ArrayList<String> incorrectAnswers;
+    private ArrayList<String> answers;
     public MultipleChoices(String correctAnswers, ArrayList<String> incorrectAnswers){
         this.correctAnswer = correctAnswers;
         this.incorrectAnswers = incorrectAnswers;
@@ -24,6 +25,15 @@ class MultipleChoices extends Answer{
     public void setIncorrectAnswers(ArrayList<String> incorrectAnswers){
         this.incorrectAnswers = incorrectAnswers;
     }
+    public String toString(){
+        answers.add(correctAnswer);
+        answers.addAll(incorrectAnswers);
+        StringBuilder info = new StringBuilder();
+        for (String s : answers){
+            info.append(s).append("\n");
+        }
+        return info.toString();
+    }
 }
 
 class Word extends Answer{
@@ -31,5 +41,8 @@ class Word extends Answer{
         this.correctAnswer = answer;
     }
     public Word(){}
+    public String toString(){
+        return correctAnswer;
+    }
 }
 

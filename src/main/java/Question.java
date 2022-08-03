@@ -10,4 +10,7 @@ public class Question{
     public String getQuestion(){
         return question;
     }
+    public String toString(){
+        return question;
+    }
 }

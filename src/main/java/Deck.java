@@ -2,27 +2,21 @@ import java.util.List;
 
 public class Deck {
     public String name;
-    public List<Question> Deck;
-
-    public void showQuestions(){
-        for(Question question : Deck){
-            question.show();
+    public String description;
+    public List<Flashcard> Deck;
+    public Deck(String name, String description){
+        this.name = name;
+        this.description = description;
+    }
+    public void showFlashcard(){
+        for(Flashcard f : Deck) {
+            System.out.println(f);
         }
     }
-    public void addQuestion(Question q){
-        Deck.add(q);
+    public void addFlashcard(Flashcard f){
+        Deck.add(f);
     }
-    public void deleteQuestion(Question q){
-        Deck.remove(q);
+    public void deleteQuestion(Flashcard f){
+        Deck.remove(f);
     }
-    /*
-    public List<Question> createDeck(){
-        List<Question> Questions = new ArrayList<Question>();
-
-        Question Pregunta1 = new OpenQuestion("hola","adios");
-        Questions.add(Pregunta1);
-
-        return Questions;
-    }
-     */
 }

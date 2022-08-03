@@ -39,8 +39,8 @@ class MCFlashcardBuilder implements IFlashcard{
 }
 
 public class Flashcard {
-    private Question question;
-    private Answer answer;
+    private final Question question;
+    private final Answer answer;
     public Flashcard(Question question, Answer answer){
         this.question = question;
         this.answer = answer;
@@ -53,6 +53,13 @@ public class Flashcard {
     }
     public boolean isCorrect(String answer){
         return Objects.equals(answer, this.answer.getCorrectAnswer());
+    }
+    public String toString(){
+        String info = "";
+        info += "Question: " + question + "\n";
+        info += "Answers: " + "\n";
+        info += answer + "\n";
+        return info;
     }
 }
 class FlashcardCreator{
