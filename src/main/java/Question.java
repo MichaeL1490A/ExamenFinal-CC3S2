@@ -1,6 +1,5 @@
 public interface Question {
-    void ask();
-    void show();
+
 }
 
 /*

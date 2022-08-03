@@ -1,4 +1,4 @@
 public interface Answer {
-    void setAnswer();
+    void setAnswer(String answer);
     String getAnswer();
 }
