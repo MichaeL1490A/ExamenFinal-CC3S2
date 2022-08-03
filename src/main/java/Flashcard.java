@@ -2,32 +2,29 @@ import java.util.Objects;
 
 interface IFlashcard{
     void setQuestion(Question q);
-    void setAnswer(Answer a);
 }
 class WordFlashcard implements IFlashcard{
     private Question question;
-    private Answer answer;
+    private Word answer;
     @Override
     public void setQuestion(Question question) {
         this.question = question;
     }
 
-    @Override
-    public void setAnswer(Answer answer) {
+    public void setAnswer(Word answer) {
         this.answer = answer;
     }
 }
 class mcFlashcard implements IFlashcard{
 
     private Question question;
-    private Answer answer;
+    private MultipleChoices answer;
     @Override
     public void setQuestion(Question question) {
         this.question = question;
     }
 
-    @Override
-    public void setAnswer(Answer answer) {
+    public void setAnswer(MultipleChoices answer) {
         this.answer = answer;
     }
 }
