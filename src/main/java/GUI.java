@@ -9,7 +9,7 @@ public class GUI {
     public void showDeck(){
         for(Deck decks : Decks){
             System.out.println(decks.name);
-            decks.showQuestions();
+            decks.showFlashcard();
         }
     }
     public void deleteDeck(Deck d){
