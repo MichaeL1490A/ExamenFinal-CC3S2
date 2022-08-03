@@ -20,6 +20,9 @@ class MultipleChoices extends Answer{
     public ArrayList<String> getIncorrectAnswers(){
         return incorrectAnswers;
     }
+    public void setIncorrectAnswers(ArrayList<String> incorrectAnswers){
+        this.incorrectAnswers = incorrectAnswers;
+    }
 }
 
 class Word extends Answer{
