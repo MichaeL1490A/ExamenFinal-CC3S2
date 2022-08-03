@@ -3,6 +3,7 @@ public class Question{
     public Question(String question){
         this.question = question;
     }
+    public Question(){}
     public void setQuestion(String question){
         this.question = question;
     }

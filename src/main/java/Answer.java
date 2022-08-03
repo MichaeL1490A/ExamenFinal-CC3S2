@@ -17,6 +17,7 @@ class MultipleChoices extends Answer{
         this.correctAnswer = correctAnswers;
         this.incorrectAnswers = incorrectAnswers;
     }
+    public MultipleChoices(){}
     public ArrayList<String> getIncorrectAnswers(){
         return incorrectAnswers;
     }
@@ -29,5 +30,6 @@ class Word extends Answer{
     public Word(String answer){
         this.correctAnswer = answer;
     }
+    public Word(){}
 }
 
