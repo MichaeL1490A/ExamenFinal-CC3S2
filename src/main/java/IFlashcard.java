@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-interface IFlashcard{
+public interface IFlashcard{
     void setQuestion(Question q);
     void setAnswer(Answer a);
 }
@@ -37,8 +37,7 @@ class MCFlashcardBuilder implements IFlashcard{
         return new Flashcard(question,answer);
     }
 }
-
-public class Flashcard {
+ class Flashcard {
     private final Question question;
     private final Answer answer;
     public Flashcard(Question question, Answer answer){
