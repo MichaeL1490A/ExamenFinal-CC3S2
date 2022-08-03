@@ -1,4 +1,10 @@
-public interface Answer {
-    void setAnswer(String answer);
-    String getAnswer();
+public abstract class Answer {
+    String correctAnswer;
+    Answer() {}
+    String getCorrectAnswer(){
+        return correctAnswer;
+    }
+    void setCorrectAnswer(String s){
+        correctAnswer = s;
+    }
 }
