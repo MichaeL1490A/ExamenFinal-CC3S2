@@ -21,7 +21,7 @@ class WordFlashcardBuilder implements IFlashcard {
         return new Flashcard(question,answer);
     }
 }
-class mcFlashcardBuilder implements IFlashcard{
+class MCFlashcardBuilder implements IFlashcard{
 
     private Question question;
     private Answer answer;
@@ -38,7 +38,7 @@ class mcFlashcardBuilder implements IFlashcard{
     }
 }
 
-class Flashcard {
+public class Flashcard {
     private Question question;
     private Answer answer;
     public Flashcard(Question question, Answer answer){
@@ -55,7 +55,7 @@ class Flashcard {
         return Objects.equals(answer, this.answer.getCorrectAnswer());
     }
 }
-class Director{
+class FlashcardCreator{
     public void constructMCFlashcard(IFlashcard iflashcard){
         iflashcard.setQuestion(new Question());
         iflashcard.setAnswer(new MultipleChoices());
@@ -65,8 +65,8 @@ class Director{
         iflashcard.setAnswer(new Word());
     }
 }
-
-public class main{
+/*
+class main{
     public static void main(String[] args){
         Director director = new Director();
 
@@ -75,3 +75,4 @@ public class main{
         Flashcard flashcard = mcflashcard.getResult();
     }
 }
+*/
