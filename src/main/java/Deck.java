@@ -1,5 +1,4 @@
 import java.util.List;
-
 public class Deck {
     public String name;
     public String description;

@@ -37,7 +37,7 @@ class MCFlashcardBuilder implements IFlashcard{
         return new Flashcard(question,answer);
     }
 }
- class Flashcard {
+class Flashcard {
     private final Question question;
     private final Answer answer;
     public Flashcard(Question question, Answer answer){
@@ -75,7 +75,6 @@ class FlashcardCreator{
 class main{
     public static void main(String[] args){
         Director director = new Director();
-
         mcFlashcardBuilder mcflashcard = new mcFlashcardBuilder();
         director.constructMCFlashcard(mcflashcard);
         Flashcard flashcard = mcflashcard.getResult();

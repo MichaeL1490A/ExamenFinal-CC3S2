@@ -1,18 +1,13 @@
-import java.util.List;
-
+import javax.swing.JFrame;
 public class GUI {
-    public List<Deck> Decks;
+    public static void main(String[] args){
+        Ventana v1 = new Ventana();
+        v1.setVisible(true);
+    }
+}
 
-    public void addDeck(Deck d){
-        Decks.add(d);
-    }
-    public void showDeck(){
-        for(Deck decks : Decks){
-            System.out.println(decks.name);
-            decks.showFlashcard();
-        }
-    }
-    public void deleteDeck(Deck d){
-        Decks.remove(d);
+class Ventana extends JFrame{
+    public Ventana(){
+        setSize(500,500);
     }
 }
