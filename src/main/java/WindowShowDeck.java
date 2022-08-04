@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,13 +44,8 @@ public class WindowShowDeck{
     public void JTable1() {
         ObjectInputStream input;
         String[] column= {"Nombre", "Descripcion"};
-        String[][] data = {};
-        ArrayList<String> data1;
         List<Deck> decks = new ArrayList<>();
         File folder = new File("Data");
-        for(String[] d : data){
-            d
-        }
         for(File file : folder.listFiles()){
             if(!file.isDirectory()) {
                 try {
@@ -65,11 +61,13 @@ public class WindowShowDeck{
                 }
             }
         }
+        String[][] d = {{"123","asdasd"},{"1231","123123"}};
+
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(130, 300, 180, 130);
         contentPane.add(scrollPane);
-        JTable jt1 = new JTable(data,column);
-        scrollPane.setViewportView(jt1);
+        //JTable jt1 = new JTable(data,column);
+        //scrollPane.setViewportView(jt1);
     }
     private void placeButtons(){
         buttonBack = new JButton("Volver");
@@ -87,5 +85,17 @@ public class WindowShowDeck{
 
         };
         buttonBack.addActionListener(actionListener);
+    }
+}
+class frmArrayListJTable{
+    DefaultTableModel modelo = new DefaultTableModel();
+    public void CargaAutomatica(){
+        ArrayList<Object> columns = new ArrayList<Object>();
+        columns.add("Nombre");
+        columns.add("Descripcion");
+        for(Object column : columns){
+            modelo.addColumn(column);
+        }
+        //this.tabladatos.setModel(modelo);
     }
 }

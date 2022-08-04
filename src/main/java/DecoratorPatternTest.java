@@ -1,14 +1,22 @@
 import java.util.*;
-
+import java.util.concurrent.TimeUnit;
 interface Quizzes {
     List<Deck> randomize();
     void addDeck(Deck d);
     void deleteDeck(Deck d);
     List<Deck> getDeck();
+    void takeTest();
 }
 class Quiz implements Quizzes{
     private List<Deck> decks = new ArrayList<>();
     public Quiz(){}
+    @Override
+    public void takeTest(){
+        for (Deck deck : decks){
+            System.out.println(deck.toString());
+            System.out.println("Press enter to continue");
+        }
+    }
     @Override
     public void addDeck(Deck d){
         decks.add(d);
@@ -55,32 +63,36 @@ abstract class QuizDecorator implements Quizzes{
 
 class TimeQuiz extends QuizDecorator{
     private List<Deck> decks = new ArrayList<>();
-    private Date time;
+    private long time;
     public TimeQuiz(Quizzes quiz){
         super(quiz);
         this.decks = decoratedquiz.getDeck();
     }
-    /*
-    New action
-    @Override
-    public String action(){
-        return decoratedquiz.action() + setTime(decoratedquiz);
+    private void setTime(long timeQuiz){
+        this.time = timeQuiz;
     }
-    */
-    private String setTime(Quizzes timeQuiz){
-        return "Tiempo añadido";
+
+    @Override
+    public void takeTest(){
+        long startTime = System.currentTimeMillis();
+        for (Deck deck : decks){
+            System.out.println(deck.toString());
+            System.out.println("Press enter to continue");
+
+        }
+        long endTime = System.currentTimeMillis();
+        time = endTime - startTime;
+        System.out.println("The test takes "+ time);
     }
 }
-/*
+
 public class DecoratorPatternTest{
     public  static void main(String[] args){
+        //Normal test
         Quizzes quizz = new Quiz();
-        quizz.setPrueba("Pruebita");
-        System.out.println(quizz.getPrueba());
-        System.out.println(quizz.action());
+        quizz.takeTest();
+        //If you want to take a test with time
         quizz = new TimeQuiz(quizz);
-        System.out.println(quizz.action());
-        System.out.println(quizz.getPrueba());
+        quizz.takeTest();
     }
 }
-*/
