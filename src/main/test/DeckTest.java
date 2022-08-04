@@ -41,5 +41,13 @@ public class DeckTest {
             deck.addFlashcard(flash);
             assertEquals(flash.toString() + "\n", deck.showFlashcard());
         }
+
+        @DisplayName("Confirmando que se puede borrar un flashcard")
+        @Test
+        public void testDeleteFlashcard() {
+            deck.addFlashcard(flash);
+            deck.deleteFlashcard(flash);
+            assertEquals("", deck.showFlashcard());
+        }
     }
 }

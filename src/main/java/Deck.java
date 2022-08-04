@@ -18,7 +18,7 @@ public class Deck {
     public void addFlashcard(Flashcard f){
         deck.add(f);
     }
-    public void deleteQuestion(Flashcard f){
+    public void deleteFlashcard(Flashcard f){
         deck.remove(f);
     }
 }
