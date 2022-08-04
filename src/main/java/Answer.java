@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public abstract class Answer {
-    String correctAnswer;
+    private String correctAnswer;
     Answer() {}
     String getCorrectAnswer(){
         return correctAnswer;
@@ -13,13 +13,13 @@ class MultipleChoices extends Answer{
     private ArrayList<String> incorrectAnswers;
 
     public MultipleChoices(String correctAnswers, ArrayList<String> incorrectAnswers){
-        this.correctAnswer = correctAnswers;
+        setCorrectAnswer(correctAnswers);
         this.incorrectAnswers = incorrectAnswers;
     }
     public MultipleChoices(){}
     public String toString(){
         ArrayList<String> answers = new ArrayList<>();
-        answers.add(this.correctAnswer);
+        answers.add(getCorrectAnswer());
         answers.addAll(this.incorrectAnswers);
         StringBuilder info = new StringBuilder();
         for (String s : answers){
@@ -31,11 +31,11 @@ class MultipleChoices extends Answer{
 
 class Word extends Answer{
     public Word(String answer){
-        this.correctAnswer = answer;
+        setCorrectAnswer(answer);
     }
     public Word(){}
     public String toString(){
-        return correctAnswer;
+        return getCorrectAnswer();
     }
 }
 

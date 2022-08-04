@@ -36,5 +36,22 @@ public class QuizzesTest {
             quiz.deleteDeck(deck);
             assertEquals(d, quiz.getDeck());
         }
+
+        @RepeatedTest(3)
+        @DisplayName("Trataremos de comprobar repitiendo que no pueden coincidir tras aleatorizar un Quiz")
+        public void testRandomizeQuiz(){
+            Deck deck2 = new Deck("Asd", "1234");
+            Deck deck3 = new Deck("Asdf", "12345");
+            Deck deck4 = new Deck("Asdfe", "123456");
+            List<Deck> d = new ArrayList<>();
+            d.add(deck);
+            d.add(deck2);
+            d.add(deck3);
+            d.add(deck4);
+            quiz.addDeck(deck2);
+            quiz.addDeck(deck3);
+            quiz.addDeck(deck4);
+            assertNotEquals(d, quiz.randomize());
+        }
     }
 }
