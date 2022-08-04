@@ -101,7 +101,7 @@ public class WindowCreateDeck{
          */
         Deck deck = new Deck(fieldNameDeck.getText(),fieldDescriptionDeck.getText());
         try {
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("Data/"+fieldNameDeck.getText()));
+            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("Data\\"+fieldNameDeck.getText()+".dat"));
             output.writeObject(deck);
             output.close();
         }

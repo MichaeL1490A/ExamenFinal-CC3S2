@@ -28,4 +28,8 @@ public class Deck implements Serializable {
     public void deleteFlashcard(Flashcard f){
         deck.remove(f);
     }
+    public String[] getInfo(){
+        String[] s = {name,description};
+        return s;
+    }
 }

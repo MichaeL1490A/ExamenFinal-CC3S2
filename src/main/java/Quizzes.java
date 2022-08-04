@@ -25,6 +25,7 @@ class Quiz implements Quizzes{
 
     @Override
     public List<Deck> randomize(){
+        Collections.shuffle(decks);
         return decks;
     }
 }

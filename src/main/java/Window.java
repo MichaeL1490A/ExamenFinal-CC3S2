@@ -22,7 +22,6 @@ public class Window{
         placeButtons();
     }
     private void placeLabels(){
-
         title = new JLabel("FLASHCARDS");
         title.setBounds(80,30,350,35);
         title.setHorizontalAlignment(SwingConstants.CENTER);
@@ -61,3 +60,4 @@ public class Window{
         showDeck.addActionListener(actionListener);
     }
 }
+
