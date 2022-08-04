@@ -3,69 +3,60 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class Window extends JFrame {
-    private JPanel panel;
-    private JPanel panel2;
-    private JLabel title = new JLabel("FLASHCARDS");
+public class Window{
+    private JFrame menu;
+    private JLabel title;
     private JButton createDeck;
     private JButton showDeck;
 
-    private JButton studyDeck;
-    public Window(){
-        setSize(500,500);
-        setTitle("FLASHCARDS");
-        setResizable(false);
-        setLocationRelativeTo(null);
+    Window(){
+        menu = new JFrame();
+        menu.setSize(500,500);
+        menu.setLayout(null);
+        menu.setVisible(true);
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         startComponents();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     private void startComponents(){
-        placePanels();
         placeLabels();
         placeButtons();
     }
-    private void placePanels(){
-        panel = new JPanel();
-        panel.setLayout(null);
-        panel.setBackground(Color.WHITE);
-        this.getContentPane().add(panel);
-    }
     private void placeLabels(){
-        ImageIcon iconImage = new ImageIcon("Media/icon.png");
-        JLabel icon = new JLabel();
-        icon.setBounds(80,30,40,50);
-        icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
-        panel.add(icon);
 
-        title.setBounds(120,30,300,50);
+        title = new JLabel("FLASHCARDS");
+        title.setBounds(80,30,350,35);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setFont(new Font("cooper black",1,40));
-        panel.add(title);
+        menu.add(title);
     }
     private void placeButtons(){
+
         createDeck = new JButton("Crear mazo");
         createDeck.setBounds(60,100,120,50);
-        //createDeck.setBackground(new Color(0,220,220, 0));
-        panel.add(createDeck);
-        ActionListener actionCreteDeck = new ActionListener(){
+        createDeck.setFocusable(false);
+        menu.add(createDeck);
+
+        showDeck = new JButton("Mostrar Mazos");
+        showDeck.setBounds(270,100,120,50);
+        showDeck.setFocusable(false);
+        menu.add(showDeck);
+
+        ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
-                panel.setVisible(false);
-                panel2 = windowCreateDeck.showPanelCreateDeck(panel);
-                panel2.setVisible(true);
-                getContentPane().add(panel2);
+                if(e.getSource()==createDeck){
+                    menu.dispose();
+                    WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
+
+                }
+                else if(e.getSource()==showDeck){
+                    menu.dispose();
+                    WindowShowDeck windowShowDeck = new WindowShowDeck();
+                }
             }
+
         };
-        createDeck.addActionListener(actionCreteDeck);
-
-        showDeck = new JButton("Mostrar mazos");
-        showDeck.setBounds(270,105,120,50);
-        panel.add(showDeck);
-
-        studyDeck = new JButton("Estudiar mazo");
-        studyDeck.setBounds(60,200,120,50);
-        panel.add(studyDeck);
-
+        createDeck.addActionListener(actionListener);
+        showDeck.addActionListener(actionListener);
     }
 }
