@@ -6,12 +6,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowShowDeck{
+public class WindowShowDecks {
     private JFrame showDeck;
-    private JLabel titleShowDeck;
-    private JButton buttonBack;
+    private JLabel titleShowDeck = new JLabel("Tus mazos");
     private JPanel contentPane = new JPanel();
-    WindowShowDeck(){
+    private JButton buttonMain = new JButton("Inicio");
+
+    private JButton buttonCreateDeck = new JButton("Crear mazo");
+    
+    WindowShowDecks(){
         showDeck = new JFrame();
         showDeck.setSize(500,500);
         showDeck.setLayout(null);
@@ -26,10 +29,10 @@ public class WindowShowDeck{
         showDeck.setContentPane(contentPane);
     }
     private void startComponents(){
-        placeButtons();
         addTitleOfWindow();
         JTable1();
-
+        addButtonBack();
+        addButtonCreateDeck();
     }
     private void addTitleOfWindow(){
         ImageIcon iconImage = new ImageIcon("Media/icon.png");
@@ -37,15 +40,15 @@ public class WindowShowDeck{
         icon.setBounds(80,30,40,50);
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
         contentPane.add(icon);
-        titleShowDeck = new JLabel("Mostrando mazos");
-        titleShowDeck.setBounds(120,30,300,50);
-        titleShowDeck.setHorizontalAlignment(SwingConstants.CENTER);
+
+        titleShowDeck.setBounds(120,30,380,50);
+        //titleShowDeck.setHorizontalAlignment(SwingConstants.CENTER);
         titleShowDeck.setFont(new Font("cooper black",1,40));
         contentPane.add(titleShowDeck);
     }
     public void JTable1() {
         ObjectInputStream input;
-        String[] column= {"Nombre", "Descripcion"};
+        String[] column= {"Nombre", "Descripcion", "Ver mazo", "Eliminar Mazo"};
         String[][] data = {};
         ArrayList<String> data1;
         List<Deck> decks = new ArrayList<>();
@@ -69,26 +72,41 @@ public class WindowShowDeck{
             }
         }
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(130, 300, 180, 130);
+        scrollPane.setBounds(50, 100, 400, 280);
         contentPane.add(scrollPane);
         JTable jt1 = new JTable(data,column);
         scrollPane.setViewportView(jt1);
     }
-    private void placeButtons(){
-        buttonBack = new JButton("Volver");
-        buttonBack.setBounds(300,400,120,50);
-        buttonBack.setFocusable(false);
-        contentPane.add(buttonBack);
+    private void addButtonBack(){
+        buttonMain.setBounds(300,400,100,30);
+        //buttonBack.setFocusable(true);
+        contentPane.add(buttonMain);
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonBack){
+                if(e.getSource()==buttonMain){
                     showDeck.dispose();
                     Window window = new Window();
                 }
             }
 
         };
-        buttonBack.addActionListener(actionListener);
+        buttonMain.addActionListener(actionListener);
     }
+    private void addButtonCreateDeck(){
+        buttonCreateDeck.setBounds(100,400,100,30);
+        contentPane.add(buttonCreateDeck);
+        ActionListener actionButtonCreate = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonCreateDeck){
+                    showDeck.dispose();
+                    WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
+                }
+            }
+        };
+        buttonCreateDeck.addActionListener(actionButtonCreate);
+    }
+
+
 }

@@ -55,7 +55,7 @@ public class Window{
                 }
                 else if(e.getSource()==showDeck){
                     menu.dispose();
-                    WindowShowDeck windowShowDeck = new WindowShowDeck();
+                    WindowShowDecks windowShowDeck = new WindowShowDecks();
                 }
             }
 

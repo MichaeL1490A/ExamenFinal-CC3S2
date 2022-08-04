@@ -11,7 +11,7 @@ public class WindowCreateDeck{
     private JLabel titleCreateDeck;
     private JLabel nameDeck;
     private JLabel descriptionDeck;
-    private JButton buttonBack;
+    private JButton buttonMain;
     private JButton buttonSave;
     /*MOVER A MOSTRAR MAZOS
     private JTextField textQuestion;
@@ -115,10 +115,10 @@ public class WindowCreateDeck{
     }
     private void placeButtons(){
 
-        buttonBack = new JButton("Volver");
-        buttonBack.setBounds(300,400,120,50);
-        buttonBack.setFocusable(false);
-        createDeck.add(buttonBack);
+        buttonMain = new JButton("Inicio");
+        buttonMain.setBounds(300,400,120,50);
+        buttonMain.setFocusable(false);
+        createDeck.add(buttonMain);
 
         buttonSave = new JButton("Guardar");
         buttonSave.setBounds(100,400,120,50);
@@ -127,7 +127,7 @@ public class WindowCreateDeck{
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonBack){
+                if(e.getSource()==buttonMain){
                     createDeck.dispose();
                     Window window = new Window();
                 }
@@ -137,7 +137,7 @@ public class WindowCreateDeck{
             }
 
         };
-        buttonBack.addActionListener(actionListener);
+        buttonMain.addActionListener(actionListener);
         buttonSave.addActionListener(actionListener);
     }
 }
