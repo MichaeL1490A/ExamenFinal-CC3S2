@@ -7,7 +7,7 @@ interface Quizzes {
     List<Deck> getDeck();
 }
 class Quiz implements Quizzes{
-    private final List<Deck> decks = new ArrayList<>();
+    private List<Deck> decks = new ArrayList<>();
     public Quiz(){}
     @Override
     public void addDeck(Deck d){
