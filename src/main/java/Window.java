@@ -47,6 +47,7 @@ public class Window{
                 if(e.getSource()==createDeck){
                     menu.dispose();
                     WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
+                    //SEPARATED
 
                 }
                 else if(e.getSource()==showDeck){

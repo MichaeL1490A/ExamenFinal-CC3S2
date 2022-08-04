@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Deck {
+import java.io.Serializable;
+public class Deck implements Serializable {
     public String name;
     public String description;
     public List<Flashcard> deck = new ArrayList<>();

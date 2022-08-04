@@ -2,13 +2,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class WindowCreateDeck{
     private JFrame createDeck;
     private JLabel titleCreateDeck;
     private JLabel nameDeck;
+    private JLabel descriptionDeck;
     private JButton buttonBack;
     private JButton buttonSave;
+    /*MOVER A MOSTRAR MAZOS
+    private JTextField textQuestion;
+    private JTextField textAnswer;
+
+     */
+    private JTextField fieldNameDeck;
+    private JTextField fieldDescriptionDeck;
     WindowCreateDeck(){
         createDeck = new JFrame();
         createDeck.setSize(500,500);
@@ -21,8 +32,7 @@ public class WindowCreateDeck{
         placeButtons();
         addTitleOfWindow();
         addNameOfDeck();
-        addQuestion();
-        addAnswer();
+        addDescriptionOfDeck();
     }
     private void addTitleOfWindow(){
         ImageIcon iconImage = new ImageIcon("Media/icon.png");
@@ -42,17 +52,25 @@ public class WindowCreateDeck{
         nameDeck = new JLabel("Nombre del mazo: ");
         nameDeck.setBounds(50,100,300,50);
         createDeck.add(nameDeck);
-        JTextField fieldNameDeck = new JTextField();
+        fieldNameDeck = new JTextField();
         fieldNameDeck.setBounds(200, 100, 200, 35);
         createDeck.add(fieldNameDeck);
     }
+    private void addDescriptionOfDeck(){
+        descriptionDeck = new JLabel("Descripcion del mazo: ");
+        descriptionDeck.setBounds(50,150,200,50);
+        createDeck.add(descriptionDeck);
+        fieldDescriptionDeck = new JTextField();
+        fieldDescriptionDeck.setBounds(200, 150, 200, 35);
+        createDeck.add(fieldDescriptionDeck);
+    }
 
+    /*MOVER A MOSTRAR MAZOS
     private void addQuestion(){
         JLabel labelQuestion = new JLabel("Pregunta: ");
         labelQuestion.setBounds(50,150,200,50);
         createDeck.add(labelQuestion);
-
-        JTextField textQuestion = new JTextField();
+        textQuestion = new JTextField();
         textQuestion.setBounds(200,150,200,35);
         createDeck.add(textQuestion);
     }
@@ -62,9 +80,34 @@ public class WindowCreateDeck{
         labelAnswer.setBounds(50,200,200,50);
         createDeck.add(labelAnswer);
 
-        JTextField textAnswer = new JTextField();
+        textAnswer = new JTextField();
         textAnswer.setBounds(200,200,200,35);
         createDeck.add(textAnswer);
+    }
+
+     */
+
+    public void makeDeck(){
+        /*MOVER A MOSTRAR MAZOS AGREGAR TARJETA
+        FlashcardCreator flashcardCreator = new FlashcardCreator();
+        WordFlashcardBuilder FlashcardBuilder = new WordFlashcardBuilder();
+
+        FlashcardBuilder.setQuestion(new Question(textQuestion.getText()));
+        FlashcardBuilder.setAnswer(new Word(textQuestion.getText()));
+
+        flashcardCreator.constructWordFlashcard(FlashcardBuilder);
+        Flashcard flashcard = FlashcardBuilder.getResult();
+
+         */
+        Deck deck = new Deck(fieldNameDeck.getText(),fieldDescriptionDeck.getText());
+        try {
+            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("Data/"+fieldNameDeck.getText()));
+            output.writeObject(deck);
+            output.close();
+        }
+        catch(IOException ioe){
+            System.err.println("Error saving to file");
+        }
     }
     private void placeButtons(){
 
@@ -85,7 +128,7 @@ public class WindowCreateDeck{
                     Window window = new Window();
                 }
                 else if(e.getSource()==buttonSave){
-
+                    makeDeck();
                 }
             }
 
