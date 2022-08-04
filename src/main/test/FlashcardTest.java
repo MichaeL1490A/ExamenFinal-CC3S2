@@ -43,6 +43,23 @@ public class FlashcardTest {
         public void testWordFlashcardCorrect() {
             assertTrue(flash.isCorrect("SUS"));
         }
+
+        @Test
+        @DisplayName("Confirmacion de modificacion de terminos para un flashcard")
+        public void testWordFlashcardEdit() {
+            FlashcardCreator flashy = new FlashcardCreator();
+            WordFlashcardBuilder wordy = new WordFlashcardBuilder();
+            flashy.constructWordFlashcard(wordy);
+            Question question = new Question("2ndQ");
+            Answer answer = new Word("2ndA");
+            wordy.setQuestion(question);
+            wordy.setAnswer(answer);
+            flash = wordy.getResult();
+            assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
+                    () -> assertEquals("2ndQ",flash.getQuestion().getQuestion()),
+                    () -> assertEquals("2ndA", flash.getAnswer().getCorrectAnswer())
+            );
+        }
     }
 
     @DisplayName("Dado que creamos un MC Flashcard")
@@ -94,6 +111,27 @@ public class FlashcardTest {
         public void testMCFlashcardCorrect() {
             assertTrue(flash.isCorrect("1"));
         }
-    }
 
+        @Test
+        @DisplayName("Confirmacion de modificacion de terminos para un flashcard")
+        public void testWordFlashcardEdit() {
+            FlashcardCreator flashy = new FlashcardCreator();
+            MCFlashcardBuilder mcfly = new MCFlashcardBuilder();
+            flashy.constructMCFlashcard(mcfly);
+            Question question = new Question("Who");
+            String correct = "5";
+            ArrayList<String> incorrect = new ArrayList<>();
+            incorrect.add("6");
+            incorrect.add("7");
+            incorrect.add("8");
+            MultipleChoices answer = new MultipleChoices(correct, incorrect);
+            mcfly.setQuestion(question);
+            mcfly.setAnswer(answer);
+            flash = mcfly.getResult();
+            assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
+                    () -> assertEquals("Who",flash.getQuestion().getQuestion()),
+                    () -> assertEquals("5", flash.getAnswer().getCorrectAnswer())
+            );
+        }
+    }
 }
