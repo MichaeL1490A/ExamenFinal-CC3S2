@@ -72,6 +72,17 @@ class Window extends JFrame {
         studyDeck = new JButton("Estudiar mazo");
         studyDeck.setBounds(60,200,120,50);
         panel.add(studyDeck);
+        ActionListener actionStudyDeck = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                WindowStudyDeck windowStudyDeck = new WindowStudyDeck();
+                panel.setVisible(false);
+                panel2 = windowStudyDeck.showWindowStudyDeck(panel);
+                panel2.setVisible(true);
+                getContentPane().add(panel2);
+            }
+        };
+        studyDeck.addActionListener(actionStudyDeck);
 
     }
 }
