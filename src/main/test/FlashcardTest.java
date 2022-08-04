@@ -17,8 +17,8 @@ public class FlashcardTest {
             FlashcardCreator flashy = new FlashcardCreator();
             WordFlashcardBuilder wordy = new WordFlashcardBuilder();
             flashy.constructWordFlashcard(wordy);
-            Question question = new Question("Amogus");
-            Answer answer = new Word("SUS");
+            Question question = new Question("Question");
+            Answer answer = new Word("Answer");
             wordy.setQuestion(question);
             wordy.setAnswer(answer);
             flash = wordy.getResult();
@@ -28,20 +28,20 @@ public class FlashcardTest {
         @DisplayName("Al crear el Flashcard podremos asignar su pregunta y respuesta inicial")
         public void testWordFlashcardTerms() {
             assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
-                    () -> assertEquals("Amogus",flash.getQuestion().getQuestion()),
-                    () -> assertEquals("SUS", flash.getAnswer().getCorrectAnswer())
+                    () -> assertEquals("Question",flash.getQuestion().getQuestion()),
+                    () -> assertEquals("Answer", flash.getAnswer().getCorrectAnswer())
             );
         }
 
         @Test
         @DisplayName("Asi mismo podremos obtener la respuesta a traves del metodo string")
         public void testWordFlashcardStrings() {
-            assertEquals("SUS", flash.getAnswer().toString());
+            assertEquals("Answer", flash.getAnswer().toString());
         }
         @Test
         @DisplayName("Asi mismo podremos saber si obtenemos la respuesta correcta con el metodo para comparar")
         public void testWordFlashcardCorrect() {
-            assertTrue(flash.isCorrect("SUS"));
+            assertTrue(flash.isCorrect("Answer"));
         }
 
         @Test
