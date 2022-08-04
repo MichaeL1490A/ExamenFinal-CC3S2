@@ -52,6 +52,7 @@ public class FlashcardTest {
             MultipleChoices answer = new MultipleChoices(correct, incorrect);
             mcfly.setQuestion(question);
             mcfly.setAnswer(answer);
+            
             flash = mcfly.getResult();
         }
 
@@ -66,7 +67,7 @@ public class FlashcardTest {
             assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
                     () -> assertEquals("Amogus",flash.getQuestion().toString()),
                     () -> assertEquals("1", flash.getAnswer().getCorrectAnswer())
-               //     () -> assertEquals(inc, flash.getAnswer().getIncorect)
+                  //  () -> assertEquals(inc, flash.getAnswer().)
             );
         }
     }
