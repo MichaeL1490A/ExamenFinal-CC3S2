@@ -7,8 +7,12 @@ public class WindowStudyDeck {
     private JPanel panelStudyDeck;
     private JPanel panelMain;
     private JButton buttonBack;
+    private JButton buttonNext;
+    private JButton buttonPrevious;
 
     private JLabel titleStudyDeck = new JLabel("ESTUDIAR MAZO");
+    private JTextArea areaQuestion = new JTextArea();
+
 
 
     public JPanel showWindowStudyDeck(JPanel panel){
@@ -23,6 +27,9 @@ public class WindowStudyDeck {
         panelStudyDeck.setBackground(Color.white);
         addTitleOfWindow();
         addButtonBack();
+        addAreaQuestion();
+        addButtonPrevious();
+        addButtonNext();
     }
 
     private void addTitleOfWindow(){
@@ -37,6 +44,34 @@ public class WindowStudyDeck {
         titleStudyDeck.setFont(new Font("cooper black",1,40));
         panelStudyDeck.add(titleStudyDeck);
     }
+
+    private void addAreaQuestion(){
+        areaQuestion.setBounds(100,100,300,200);
+        areaQuestion.setEnabled(false);
+        areaQuestion.setText("Aca ira la pregunta");
+        panelStudyDeck.add(areaQuestion);
+    }
+
+    private void addButtonPrevious(){
+        buttonPrevious = new JButton();
+        buttonPrevious.setBounds(100,400,150, 50);
+        ImageIcon iconPrevious = new ImageIcon("Media/imagePrevious.png");
+        buttonPrevious.setIcon(new ImageIcon(iconPrevious.getImage().getScaledInstance(buttonPrevious.getWidth(), buttonPrevious.getHeight(), Image.SCALE_SMOOTH)));
+        //buttonPrevious.setBorder(null);
+        panelStudyDeck.add(buttonPrevious);
+
+    }
+
+     private void addButtonNext(){
+        buttonNext = new JButton();
+        buttonNext.setBounds(300,400,150, 50);
+        ImageIcon iconNext = new ImageIcon("Media/imageNext.png");
+        buttonNext.setIcon(new ImageIcon(iconNext.getImage().getScaledInstance(buttonNext.getWidth(), buttonNext.getHeight(), Image.SCALE_SMOOTH)));
+        //buttonNext.setBorder(null);
+        panelStudyDeck.add(buttonNext);
+
+    }
+
 
 
     private void addButtonBack(){
