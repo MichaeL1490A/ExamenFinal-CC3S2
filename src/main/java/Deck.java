@@ -1,16 +1,19 @@
+import java.util.ArrayList;
 import java.util.List;
 public class Deck {
     public String name;
     public String description;
-    public List<Flashcard> deck;
+    public List<Flashcard> deck = new ArrayList<>();
     public Deck(String name, String description){
         this.name = name;
         this.description = description;
     }
-    public void showFlashcard(){
+    public String showFlashcard(){
+        StringBuilder info = new StringBuilder();
         for(Flashcard f : deck) {
-            System.out.println(f);
+            info.append(f.toString()).append("\n");
         }
+        return info.toString();
     }
     public void addFlashcard(Flashcard f){
         deck.add(f);

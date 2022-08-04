@@ -6,6 +6,7 @@ public abstract class Answer {
     String getCorrectAnswer(){
         return correctAnswer;
     }
+    void setCorrectAnswer(String correctAnswer) {this.correctAnswer = correctAnswer;}
 }
 
 class MultipleChoices extends Answer{
