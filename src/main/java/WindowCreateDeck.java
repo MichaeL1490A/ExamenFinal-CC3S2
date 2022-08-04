@@ -45,47 +45,35 @@ public class WindowCreateDeck extends JFrame {
 
     private void addNameOfDeck(){
         nameDeck.setBounds(50,100,300,50);
-        //labelAnswer.setHorizontalAlignment(SwingConstants.CENTER);
-        nameDeck.setFont(new Font("cooper black",1,12));
         panelCreateDeck.add(nameDeck);
-
         JTextField fieldNameDeck = new JTextField();
-        fieldNameDeck.setBounds(250, 100, 200, 50);
-        fieldNameDeck.setFont(new Font("cooper black",0,12));
+        fieldNameDeck.setBounds(200, 100, 200, 35);
         panelCreateDeck.add(fieldNameDeck);
     }
 
     private void addQuestion(){
-        JLabel labelQuestion = new JLabel("Pregunta ");
-        labelQuestion.setBounds(50,200,100,50);
-        labelQuestion.setFont(new Font("cooper black",1,12));
+        JLabel labelQuestion = new JLabel("Pregunta: ");
+        labelQuestion.setBounds(50,150,200,50);
         panelCreateDeck.add(labelQuestion);
 
-        JTextArea textQuestion = new JTextArea();
-        textQuestion.setBounds(50,300,400,100);
-        textQuestion.setBackground(Color.BLACK);
-        textQuestion.setForeground(Color.WHITE);
-        textQuestion.setFont(new Font("cooper black",1,12));
+        JTextField textQuestion = new JTextField();
+        textQuestion.setBounds(200,150,200,35);
         panelCreateDeck.add(textQuestion);
     }
 
     private void addAnswer(){
-        JLabel labelAnswer = new JLabel("Respuesta ");
-        labelAnswer.setBounds(50,400,100,50);
-        labelAnswer.setFont(new Font("cooper black",1,12));
+        JLabel labelAnswer = new JLabel("Respuesta: ");
+        labelAnswer.setBounds(50,200,200,50);
         panelCreateDeck.add(labelAnswer);
 
-        JTextArea textAnswer = new JTextArea();
-        textAnswer.setBounds(50,450,400,100);
-        textAnswer.setBackground(Color.BLACK);
-        textAnswer.setForeground(Color.WHITE);
-        textAnswer.setFont(new Font("cooper black",1,12));
+        JTextField textAnswer = new JTextField();
+        textAnswer.setBounds(200,200,200,35);
         panelCreateDeck.add(textAnswer);
     }
 
     private void addButtonBack(){
         buttonBack = new JButton("Volver");
-        buttonBack.setBounds(400,400,120,50);
+        buttonBack.setBounds(300,400,120,50);
         panelCreateDeck.add(buttonBack);
         ActionListener actionBack = new ActionListener(){
             @Override
@@ -99,7 +87,7 @@ public class WindowCreateDeck extends JFrame {
 
     private void addButtonSave(){
         buttonSave = new JButton("Guardar");
-        buttonSave.setBounds(200,400,120,50);
+        buttonSave.setBounds(100,400,120,50);
         panelCreateDeck.add(buttonSave);
         /*ActionListener actionSave= new ActionListener(){
             @Override
