@@ -25,8 +25,12 @@ public class WindowCreateDeck{
         createDeck.setSize(500,500);
         createDeck.setLayout(null);
         createDeck.setVisible(true);
-        createDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        createDeck.setResizable(false);
+        createDeck.setLocationRelativeTo(null);
+
         startComponents();
+
+        createDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     private void startComponents(){
         placeButtons();

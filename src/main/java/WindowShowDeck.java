@@ -17,10 +17,13 @@ public class WindowShowDeck{
         showDeck.setLayout(null);
         showDeck.setVisible(true);
         showDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        showDeck.setResizable(false);
+        showDeck.setLocationRelativeTo(null);
         contentPane.setLayout(null);
-        startComponents();
-        showDeck.setContentPane(contentPane);
 
+        startComponents();
+
+        showDeck.setContentPane(contentPane);
     }
     private void startComponents(){
         placeButtons();
@@ -48,7 +51,7 @@ public class WindowShowDeck{
         List<Deck> decks = new ArrayList<>();
         File folder = new File("Data");
         for(String[] d : data){
-            d
+           // d;
         }
         for(File file : folder.listFiles()){
             if(!file.isDirectory()) {

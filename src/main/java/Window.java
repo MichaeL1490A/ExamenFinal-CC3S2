@@ -14,8 +14,12 @@ public class Window{
         menu.setSize(500,500);
         menu.setLayout(null);
         menu.setVisible(true);
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menu.setResizable(false);
+        menu.setLocationRelativeTo(null);
+
         startComponents();
+
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     private void startComponents(){
         placeLabels();
