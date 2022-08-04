@@ -52,7 +52,6 @@ public class FlashcardTest {
             MultipleChoices answer = new MultipleChoices(correct, incorrect);
             mcfly.setQuestion(question);
             mcfly.setAnswer(answer);
-            
             flash = mcfly.getResult();
         }
 
@@ -60,14 +59,18 @@ public class FlashcardTest {
         @DisplayName("Al crear el Flashcard podremos asignar su pregunta y respuesta inicial")
         public void testMCFlashcardTerms() {
             ArrayList<String> inc = new ArrayList<>();
+            inc.add("1");
             inc.add("2");
             inc.add("3");
             inc.add("4");
-            System.out.println(flash.getAnswer().toString());
+            StringBuilder info = new StringBuilder();
+            for (String s : inc){
+                info.append(s).append("\n");
+            }
             assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
                     () -> assertEquals("Amogus",flash.getQuestion().toString()),
-                    () -> assertEquals("1", flash.getAnswer().getCorrectAnswer())
-                  //  () -> assertEquals(inc, flash.getAnswer().)
+                    () -> assertEquals("1", flash.getAnswer().getCorrectAnswer()),
+                    () -> assertEquals(info.toString(), flash.getAnswer().toString())
             );
         }
     }
