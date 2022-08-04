@@ -55,7 +55,7 @@ class Flashcard {
     }
     public String toString(){
         String info = "";
-        info += "Question: " + question + "\n";
+        info += "Question: " + getQuestion() + "\n";
         info += "Answers: " + "\n";
         info += answer + "\n";
         return info;

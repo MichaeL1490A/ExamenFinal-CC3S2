@@ -28,9 +28,15 @@ public class FlashcardTest {
         @DisplayName("Al crear el Flashcard podremos asignar su pregunta y respuesta inicial")
         public void testWordFlashcardTerms() {
             assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
-                    () -> assertEquals("Amogus",flash.getQuestion().toString()),
-                    () -> assertEquals("SUS", flash.getAnswer().toString())
+                    () -> assertEquals("Amogus",flash.getQuestion().getQuestion()),
+                    () -> assertEquals("SUS", flash.getAnswer().getCorrectAnswer())
             );
+        }
+
+        @Test
+        @DisplayName("Asi mismo podremos obtener la respuesta a traves del metodo string")
+        public void testWordFlashcardStrings() {
+            assertEquals("SUS", flash.getAnswer().toString());
         }
     }
 
@@ -58,6 +64,14 @@ public class FlashcardTest {
         @Test
         @DisplayName("Al crear el Flashcard podremos asignar su pregunta y respuesta inicial")
         public void testMCFlashcardTerms() {
+            assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
+                    () -> assertEquals("Amogus",flash.getQuestion().getQuestion()),
+                    () -> assertEquals("1", flash.getAnswer().getCorrectAnswer())
+            );
+        }
+        @Test
+        @DisplayName("Revisando si afirmativamente se retorna el string del answer correctamente")
+        public void testMCFlashcardAnswer() {
             ArrayList<String> inc = new ArrayList<>();
             inc.add("1");
             inc.add("2");
@@ -67,11 +81,7 @@ public class FlashcardTest {
             for (String s : inc){
                 info.append(s).append("\n");
             }
-            assertAll("Verifica que todos los terminos insertados en el Flashcard son correctamente creados",
-                    () -> assertEquals("Amogus",flash.getQuestion().toString()),
-                    () -> assertEquals("1", flash.getAnswer().getCorrectAnswer()),
-                    () -> assertEquals(info.toString(), flash.getAnswer().toString())
-            );
+            assertEquals(info.toString(), flash.getAnswer().toString());
         }
     }
 
