@@ -52,9 +52,9 @@ class Window extends JFrame {
         ActionListener actionCreteDeck = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
                 WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
-                panel2 = windowCreateDeck.showPanelCreateDeck();
+                panel.setVisible(false);
+                panel2 = windowCreateDeck.showPanelCreateDeck(panel);
                 panel2.setVisible(true);
                 getContentPane().add(panel2);
             }
