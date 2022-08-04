@@ -13,14 +13,14 @@ public class DeckTest {
 
         @BeforeEach
         void setUp() {
-            String name = "Save";
-            String desc = "Someone save me pls";
+            String name = "Name";
+            String desc = "Desc";
             deck = new Deck(name, desc);
             FlashcardCreator flashy = new FlashcardCreator();
             WordFlashcardBuilder wordy = new WordFlashcardBuilder();
             flashy.constructWordFlashcard(wordy);
-            Question question = new Question("Amogus");
-            Answer answer = new Word("SUS");
+            Question question = new Question("Question");
+            Answer answer = new Word("Answer");
             wordy.setQuestion(question);
             wordy.setAnswer(answer);
             flash = wordy.getResult();
@@ -30,8 +30,8 @@ public class DeckTest {
         @Test
         public void testDeckTerms() {
             assertAll("Tanto el name como la descripcion deberian ser correctos",
-                    () -> assertEquals("Save", deck.getName()),
-                    () -> assertEquals("Someone save me pls", deck.getDescription())
+                    () -> assertEquals("Name", deck.getName()),
+                    () -> assertEquals("Desc", deck.getDescription())
             );
         }
 
