@@ -1,5 +1,4 @@
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 interface Quizzes {
     List<Deck> randomize();
@@ -8,7 +7,7 @@ interface Quizzes {
     List<Deck> getDeck();
 }
 class Quiz implements Quizzes{
-    private List<Deck> decks;
+    private final List<Deck> decks = new ArrayList<>();
     public Quiz(){}
     @Override
     public void addDeck(Deck d){
@@ -16,7 +15,7 @@ class Quiz implements Quizzes{
     }
     @Override
     public void deleteDeck(Deck d){
-        decks.add(d);
+        decks.remove(d);
     }
 
     @Override
@@ -54,11 +53,11 @@ abstract class QuizDecorator implements Quizzes{
 }
 
 class TimeQuiz extends QuizDecorator{
-    private List<Deck> decks;
+    private List<Deck> decks = new ArrayList<>();
     private Date time;
     public TimeQuiz(Quizzes quiz){
         super(quiz);
-        decks = decoratedquiz.getDeck();
+        this.decks = decoratedquiz.getDeck();
     }
     /*
     New action

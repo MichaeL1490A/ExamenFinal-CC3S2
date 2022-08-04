@@ -38,6 +38,11 @@ public class FlashcardTest {
         public void testWordFlashcardStrings() {
             assertEquals("SUS", flash.getAnswer().toString());
         }
+        @Test
+        @DisplayName("Asi mismo podremos saber si obtenemos la respuesta correcta con el metodo para comparar")
+        public void testWordFlashcardCorrect() {
+            assertTrue(flash.isCorrect("SUS"));
+        }
     }
 
     @DisplayName("Dado que creamos un MC Flashcard")
@@ -82,6 +87,12 @@ public class FlashcardTest {
                 info.append(s).append("\n");
             }
             assertEquals(info.toString(), flash.getAnswer().toString());
+        }
+
+        @Test
+        @DisplayName("Asi mismo podremos saber si obtenemos la respuesta correcta con el metodo para comparar")
+        public void testMCFlashcardCorrect() {
+            assertTrue(flash.isCorrect("1"));
         }
     }
 
