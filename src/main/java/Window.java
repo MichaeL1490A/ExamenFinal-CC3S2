@@ -16,9 +16,7 @@ class Window extends JFrame {
         setTitle("FLASHCARDS");
         setResizable(false);
         setLocationRelativeTo(null);
-
         startComponents();
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     private void startComponents(){
@@ -60,10 +58,6 @@ class Window extends JFrame {
             }
         };
         createDeck.addActionListener(actionCreteDeck);
-
-
-
-
 
         showDeck = new JButton("Mostrar mazos");
         showDeck.setBounds(270,105,120,50);
