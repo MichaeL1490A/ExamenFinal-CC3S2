@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WindowCreateDeck {
+public class WindowCreateDeck extends JFrame {
     private JPanel panelCreateDeck;
     private JPanel panelMain;
     private JButton buttonBack;
