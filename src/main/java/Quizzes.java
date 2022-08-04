@@ -1,6 +1,6 @@
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-interface Quizzes {
+
+public interface Quizzes {
     List<Deck> randomize();
     void addDeck(Deck d);
     void deleteDeck(Deck d);
@@ -85,7 +85,7 @@ class TimeQuiz extends QuizDecorator{
         System.out.println("The test takes "+ time);
     }
 }
-
+/*
 public class DecoratorPatternTest{
     public  static void main(String[] args){
         //Normal test
@@ -96,3 +96,4 @@ public class DecoratorPatternTest{
         quizz.takeTest();
     }
 }
+*/
