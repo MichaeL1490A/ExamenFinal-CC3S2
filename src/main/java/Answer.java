@@ -26,10 +26,11 @@ class MultipleChoices extends Answer{
         this.incorrectAnswers = incorrectAnswers;
     }
     public String toString(){
-        answers.add(correctAnswer);
-        answers.addAll(incorrectAnswers);
+        answers = new ArrayList<>();
+        this.answers.add(this.correctAnswer);
+        this.answers.addAll(this.incorrectAnswers);
         StringBuilder info = new StringBuilder();
-        for (String s : answers){
+        for (String s : this.answers){
             info.append(s).append("\n");
         }
         return info.toString();
