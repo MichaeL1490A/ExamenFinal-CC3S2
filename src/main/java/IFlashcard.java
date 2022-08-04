@@ -66,7 +66,7 @@ class FlashcardCreator{
         iflashcard.setQuestion(new Question());
         iflashcard.setAnswer(new MultipleChoices());
     }
-    public void constructWordlashcard(IFlashcard iflashcard){
+    public void constructWordFlashcard(IFlashcard iflashcard){
         iflashcard.setQuestion(new Question());
         iflashcard.setAnswer(new Word());
     }
