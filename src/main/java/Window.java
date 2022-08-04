@@ -12,10 +12,10 @@ public class Window{
     Window(){
         menu = new JFrame();
         menu.setSize(500,500);
+        menu.setLocationRelativeTo(null);
         menu.setLayout(null);
         menu.setVisible(true);
         menu.setResizable(false);
-        menu.setLocationRelativeTo(null);
 
         startComponents();
 

@@ -23,10 +23,10 @@ public class WindowCreateDeck{
     WindowCreateDeck(){
         createDeck = new JFrame();
         createDeck.setSize(500,500);
+        createDeck.setLocationRelativeTo(null);
         createDeck.setLayout(null);
         createDeck.setVisible(true);
         createDeck.setResizable(false);
-        createDeck.setLocationRelativeTo(null);
 
         startComponents();
 

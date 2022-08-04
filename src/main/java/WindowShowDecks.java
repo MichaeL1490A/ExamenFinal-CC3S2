@@ -17,16 +17,16 @@ public class WindowShowDecks {
     WindowShowDecks(){
         showDeck = new JFrame();
         showDeck.setSize(500,500);
+        showDeck.setLocationRelativeTo(null);
         showDeck.setLayout(null);
         showDeck.setVisible(true);
-        showDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         showDeck.setResizable(false);
-        showDeck.setLocationRelativeTo(null);
+        showDeck.setContentPane(contentPane);
         contentPane.setLayout(null);
 
         startComponents();
 
-        showDeck.setContentPane(contentPane);
+        showDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     private void startComponents(){
         addTitleOfWindow();
