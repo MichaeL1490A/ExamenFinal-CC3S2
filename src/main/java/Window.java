@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class Window extends JFrame {
     private JPanel panel;
+    private JPanel panel2;
     private JLabel title = new JLabel("FLASHCARDS");
     private JButton createDeck;
     private JButton showDeck;
@@ -14,11 +17,11 @@ class Window extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
 
-        iniciarComponentes();
+        startComponents();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    private void iniciarComponentes(){
+    private void startComponents(){
         placePanels();
         placeLabels();
         placeButtons();
@@ -44,7 +47,23 @@ class Window extends JFrame {
     private void placeButtons(){
         createDeck = new JButton("Crear mazo");
         createDeck.setBounds(60,100,120,50);
+        //createDeck.setBackground(new Color(0,220,220, 0));
         panel.add(createDeck);
+        ActionListener actionCreteDeck = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                WindowCreateDeck windowCreateDeck = new WindowCreateDeck();
+                panel2 = windowCreateDeck.showPanelCreateDeck();
+                panel2.setVisible(true);
+                getContentPane().add(panel2);
+            }
+        };
+        createDeck.addActionListener(actionCreteDeck);
+
+
+
+
 
         showDeck = new JButton("Mostrar mazos");
         showDeck.setBounds(270,105,120,50);
