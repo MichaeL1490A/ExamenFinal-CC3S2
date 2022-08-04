@@ -30,8 +30,8 @@ public class DeckTest {
         @Test
         public void testDeckTerms() {
             assertAll("Tanto el name como la descripcion deberian ser correctos",
-                    () -> assertEquals("Save", deck.name),
-                    () -> assertEquals("Someone save me pls", deck.description)
+                    () -> assertEquals("Save", deck.getName()),
+                    () -> assertEquals("Someone save me pls", deck.getDescription())
             );
         }
 

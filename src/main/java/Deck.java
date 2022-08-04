@@ -2,12 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 public class Deck implements Serializable {
-    public String name;
-    public String description;
+    private String name;
+    private String description;
     public List<Flashcard> deck = new ArrayList<>();
     public Deck(String name, String description){
         this.name = name;
         this.description = description;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String getDescription(){
+        return this.description;
     }
     public String showFlashcard(){
         StringBuilder info = new StringBuilder();
