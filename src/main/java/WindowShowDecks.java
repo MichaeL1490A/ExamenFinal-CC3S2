@@ -50,9 +50,10 @@ public class WindowShowDecks {
         ObjectInputStream input;
         String[] column= {"Nombre", "Descripcion", "Ver mazo", "Eliminar Mazo"};
         String[][] data = {};
-        ArrayList<String> data1;
+        //ArrayList<String> data1;
         List<Deck> decks = new ArrayList<>();
         File folder = new File("Data");
+        System.out.println(data);
         for(String[] d : data){
            // d;
         }
