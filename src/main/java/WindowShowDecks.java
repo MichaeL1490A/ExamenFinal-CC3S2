@@ -9,7 +9,7 @@ import java.util.List;
 public class WindowShowDecks {
     private JFrame showDeck;
     private JLabel titleShowDeck = new JLabel("Tus mazos");
-    private JPanel contentPane = new JPanel();
+    private JPanel contentPanel = new JPanel();
     private JButton buttonMain = new JButton("Inicio");
 
     private JButton buttonCreateDeck = new JButton("Crear mazo");
@@ -21,8 +21,8 @@ public class WindowShowDecks {
         showDeck.setLayout(null);
         showDeck.setVisible(true);
         showDeck.setResizable(false);
-        showDeck.setContentPane(contentPane);
-        contentPane.setLayout(null);
+        showDeck.setContentPane(contentPanel);
+        contentPanel.setLayout(null);
 
         startComponents();
 
@@ -33,18 +33,18 @@ public class WindowShowDecks {
         JTable1();
         addButtonBack();
         addButtonCreateDeck();
+        addButtonShowDeck();
     }
     private void addTitleOfWindow(){
         ImageIcon iconImage = new ImageIcon("Media/icon.png");
         JLabel icon = new JLabel();
         icon.setBounds(80,30,40,50);
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
-        contentPane.add(icon);
+        contentPanel.add(icon);
 
-        titleShowDeck.setBounds(120,30,380,50);
-        //titleShowDeck.setHorizontalAlignment(SwingConstants.CENTER);
+        titleShowDeck.setBounds(140,30,380,50);
         titleShowDeck.setFont(new Font("cooper black",1,40));
-        contentPane.add(titleShowDeck);
+        contentPanel.add(titleShowDeck);
     }
     public void JTable1() {
         ObjectInputStream input;
@@ -74,14 +74,14 @@ public class WindowShowDecks {
         }
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(50, 100, 400, 280);
-        contentPane.add(scrollPane);
+        contentPanel.add(scrollPane);
         JTable jt1 = new JTable(data,column);
         scrollPane.setViewportView(jt1);
     }
     private void addButtonBack(){
         buttonMain.setBounds(300,400,100,30);
         //buttonBack.setFocusable(true);
-        contentPane.add(buttonMain);
+        contentPanel.add(buttonMain);
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,7 +96,7 @@ public class WindowShowDecks {
     }
     private void addButtonCreateDeck(){
         buttonCreateDeck.setBounds(100,400,100,30);
-        contentPane.add(buttonCreateDeck);
+        contentPanel.add(buttonCreateDeck);
         ActionListener actionButtonCreate = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,5 +109,25 @@ public class WindowShowDecks {
         buttonCreateDeck.addActionListener(actionButtonCreate);
     }
 
+    private void addButtonShowDeck(){
+        JButton buttonShowDeck = new JButton();
+        buttonShowDeck.setText("Ver mazo");
+        buttonShowDeck.setBounds(200,400,100,30);
+        contentPanel.add(buttonShowDeck);
+
+        ActionListener actionButtonShowDeck = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonShowDeck){
+                    showDeck.dispose();
+                    WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck();
+                }
+            }
+        };
+        buttonShowDeck.addActionListener(actionButtonShowDeck);
+
+
+
+    }
 
 }

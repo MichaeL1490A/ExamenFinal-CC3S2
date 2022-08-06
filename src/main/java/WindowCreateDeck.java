@@ -46,8 +46,7 @@ public class WindowCreateDeck{
         createDeck.add(icon);
 
         titleCreateDeck = new JLabel("CREAR MAZO");
-        titleCreateDeck.setBounds(120,30,300,50);
-        titleCreateDeck.setHorizontalAlignment(SwingConstants.CENTER);
+        titleCreateDeck.setBounds(140,30,300,50);
         titleCreateDeck.setFont(new Font("cooper black",1,40));
         createDeck.add(titleCreateDeck);
     }
