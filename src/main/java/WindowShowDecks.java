@@ -18,7 +18,7 @@ public class WindowShowDecks {
 
     private JTable table;
     private List<Deck> decks;
-    
+
     WindowShowDecks(){
         showDeck = new JFrame();
         showDeck.setSize(500,500);
