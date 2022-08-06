@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -77,9 +78,11 @@ public class WindowCreateDeck{
          */
         Deck deck = new Deck(fieldNameDeck.getText(),fieldDescriptionDeck.getText());
         try {
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("Data\\"+fieldNameDeck.getText()+".dat"));
-            output.writeObject(deck);
-            output.close();
+            FileOutputStream f = new FileOutputStream(new File("Data\\"+fieldNameDeck.getText()+".dat"));
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            o.writeObject(deck);
+            o.close();
+            f.close();
         }
         catch(IOException ioe){
             System.err.println("Error saving to file");

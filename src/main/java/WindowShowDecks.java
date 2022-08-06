@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,23 +48,23 @@ public class WindowShowDecks {
         contentPanel.add(title);
     }
     public void JTable1() {
-        ObjectInputStream input;
-        String[] column= {"Nombre", "Descripcion", "Ver mazo", "Eliminar Mazo"};
-        String[][] data = {};
-        //ArrayList<String> data1;
+        String name;
+        String description;
+        FileInputStream fi;
+        ObjectInputStream oi;
         List<Deck> decks = new ArrayList<>();
         File folder = new File("Data");
-        System.out.println(data);
-        for(String[] d : data){
-           // d;
-        }
         for(File file : folder.listFiles()){
+            Deck d;
             if(!file.isDirectory()) {
                 try {
                     String rut = "Data\\"+file.getName();
-                    input = new ObjectInputStream(new FileInputStream(rut));
-                    decks.add((Deck) input.readObject());
-
+                    fi = new FileInputStream(new File(rut));
+                    oi = new ObjectInputStream(fi);
+                    d = (Deck) oi.readObject();
+                    decks.add(d);
+                    oi.close();
+                    fi.close();
                 } catch (IOException ioe) {
                     System.err.println("Error opening file");
                 }
@@ -72,11 +73,25 @@ public class WindowShowDecks {
                 }
             }
         }
+        String col[] = {"Name", "Description"};
+        DefaultTableModel tableModel = new DefaultTableModel(col,0){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        JTable table = new JTable(tableModel);
+        for (Deck d :decks){
+            name = d.getName();
+            description = d.getDescription();
+            Object[] data = {name,description};
+            tableModel.addRow(data);
+        }
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 100, 400, 280);
+        scrollPane.setBounds(50,100,400,280);
         contentPanel.add(scrollPane);
-        JTable jt1 = new JTable(data,column);
-        scrollPane.setViewportView(jt1);
+        scrollPane.setViewportView(table);
     }
     private void addButtonBack(){
         buttonMain.setBounds(300,400,100,30);
@@ -125,9 +140,6 @@ public class WindowShowDecks {
             }
         };
         buttonShowDeck.addActionListener(actionButtonShowDeck);
-
-
-
     }
 
 }
