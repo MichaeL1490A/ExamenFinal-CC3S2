@@ -4,88 +4,96 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class WindowStudyDeck {
-    private JPanel panelStudyDeck;
-    private JPanel panelMain;
-    private JButton buttonBack;
-    private JButton buttonNext;
-    private JButton buttonPrevious;
-
-    private JLabel titleStudyDeck = new JLabel("ESTUDIAR MAZO");
+    private JFrame showStudyDeck;
+    private JPanel contentPanel = new JPanel();
+    private JLabel title = new JLabel("Mazo");
+    private JLabel nameDeck = new JLabel();
     private JTextArea areaQuestion = new JTextArea();
+    private JTextArea areaAnswer = new JTextArea();
+    private JButton buttonSave = new JButton("Ver respuesta");
+    private JButton buttonPrevious = new JButton("Anterior");
+    private JButton buttonNext = new JButton("Siguiente");
+    private JButton buttonBack = new JButton("Volver");
 
 
+    WindowStudyDeck(){
+        showStudyDeck = new JFrame();
+        showStudyDeck.setSize(500, 500);
+        showStudyDeck.setLocationRelativeTo(null);
+        showStudyDeck.setVisible(true);
+        showStudyDeck.setLayout(null);
+        showStudyDeck.setResizable(false);
+        showStudyDeck.setContentPane(contentPanel);
+        contentPanel.setLayout(null);
 
-    public JPanel showWindowStudyDeck(JPanel panel){
-        panelMain = panel;
-        startComponents();
-        return panelStudyDeck;
+        startsComponents();
+
+        showStudyDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
-
-    private void startComponents(){
-        panelStudyDeck = new JPanel();
-        panelStudyDeck.setLayout(null);
-        panelStudyDeck.setBackground(Color.white);
+    private void startsComponents() {
         addTitleOfWindow();
-        addButtonBack();
         addAreaQuestion();
+        addAreaAnswer();
         addButtonPrevious();
         addButtonNext();
+        addButtonBack();
     }
-
-    private void addTitleOfWindow(){
+    private void addTitleOfWindow() {
         ImageIcon iconImage = new ImageIcon("Media/icon.png");
         JLabel icon = new JLabel();
-        icon.setBounds(80,30,40,50);
+        icon.setBounds(80, 30, 40, 50);
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
-        panelStudyDeck.add(icon);
+        contentPanel.add(icon);
 
-        titleStudyDeck.setBounds(120,30,350,50);
-        titleStudyDeck.setHorizontalAlignment(SwingConstants.CENTER);
-        titleStudyDeck.setFont(new Font("cooper black",1,40));
-        panelStudyDeck.add(titleStudyDeck);
+        title.setBounds(140, 30, 380, 50);
+        title.setFont(new Font("cooper black", 1, 40));
+        contentPanel.add(title);
+
+        nameDeck.setBounds(100, 100, 300, 20);
+        nameDeck.setText("Nombre del mazo");
+        nameDeck.setFont(new Font("cooper black", 1, 20));
+        contentPanel.add(nameDeck);
     }
 
     private void addAreaQuestion(){
-        areaQuestion.setBounds(100,100,300,200);
-        areaQuestion.setEnabled(false);
-        areaQuestion.setText("Aca ira la pregunta");
-        panelStudyDeck.add(areaQuestion);
+        areaQuestion.setBounds(100,150,300,100);
+        areaQuestion.setText("Pregunta");
+        contentPanel.add(areaQuestion);
+    }
+    private void addAreaAnswer(){
+
+        areaAnswer.setBounds(100,250,300,100);
+        areaAnswer.setText("Area de respuesta");
+        contentPanel.add(areaAnswer);
     }
 
-    private void addButtonPrevious(){
-        buttonPrevious = new JButton();
-        buttonPrevious.setBounds(100,400,150, 50);
-        ImageIcon iconPrevious = new ImageIcon("Media/imagePrevious.png");
-        buttonPrevious.setIcon(new ImageIcon(iconPrevious.getImage().getScaledInstance(buttonPrevious.getWidth(), buttonPrevious.getHeight(), Image.SCALE_SMOOTH)));
-        //buttonPrevious.setBorder(null);
-        panelStudyDeck.add(buttonPrevious);
 
+    private void addButtonPrevious() {
+        buttonPrevious.setBounds(100, 400, 100, 30);
+        buttonPrevious.setText("Anterior");
+        contentPanel.add(buttonPrevious);
     }
-
-     private void addButtonNext(){
-        buttonNext = new JButton();
-        buttonNext.setBounds(300,400,150, 50);
-        ImageIcon iconNext = new ImageIcon("Media/imageNext.png");
-        buttonNext.setIcon(new ImageIcon(iconNext.getImage().getScaledInstance(buttonNext.getWidth(), buttonNext.getHeight(), Image.SCALE_SMOOTH)));
-        //buttonNext.setBorder(null);
-        panelStudyDeck.add(buttonNext);
-
+    private void addButtonNext() {
+        buttonNext.setBounds(200, 400, 100, 30);
+        buttonNext.setText("Siguiente");
+        contentPanel.add(buttonNext);
     }
-
 
 
     private void addButtonBack(){
-        buttonBack = new JButton("Volver");
-        buttonBack.setBounds(400,400,120,50);
-        panelStudyDeck.add(buttonBack);
-        ActionListener actionBack = new ActionListener(){
+        buttonBack.setBounds(300,400,100,30);
+        contentPanel.add(buttonBack);
+        ActionListener actionButtonBack = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelStudyDeck.setVisible(false);
-                panelMain.setVisible(true);
+                if(e.getSource()==buttonBack){
+                    showStudyDeck.dispose();
+                    WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck();
+                }
             }
         };
-        buttonBack.addActionListener(actionBack);
+        buttonBack.addActionListener(actionButtonBack);
     }
 
 }
