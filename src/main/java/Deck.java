@@ -9,6 +9,10 @@ public class Deck implements Serializable {
         this.name = name;
         this.description = description;
     }
+    public Deck(){
+        this.name="";
+        this.description="";
+    }
     public String getName(){
         return this.name;
     }
@@ -30,6 +34,9 @@ public class Deck implements Serializable {
     }
     public void getInfo(){
         System.out.println(name+" "+description);
+    }
+    public Deck returnDeck(){
+        return this;
     }
     @Override
     public String toString() {

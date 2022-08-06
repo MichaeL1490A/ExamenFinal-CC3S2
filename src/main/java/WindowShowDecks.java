@@ -1,3 +1,4 @@
+import javax.management.Descriptor;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -14,6 +15,9 @@ public class WindowShowDecks {
     private JButton buttonMain = new JButton("Inicio");
 
     private JButton buttonCreateDeck = new JButton("Crear mazo");
+
+    private JTable table;
+    private List<Deck> decks;
     
     WindowShowDecks(){
         showDeck = new JFrame();
@@ -47,22 +51,23 @@ public class WindowShowDecks {
         title.setFont(new Font("cooper black",1,40));
         contentPanel.add(title);
     }
-    public void JTable1() {
+
+    private void JTable1() {
         String name;
         String description;
         FileInputStream fi;
         ObjectInputStream oi;
-        List<Deck> decks = new ArrayList<>();
+        decks = new ArrayList<>();
         File folder = new File("Data");
+        Deck dtemp;
         for(File file : folder.listFiles()){
-            Deck d;
             if(!file.isDirectory()) {
                 try {
                     String rut = "Data\\"+file.getName();
                     fi = new FileInputStream(new File(rut));
                     oi = new ObjectInputStream(fi);
-                    d = (Deck) oi.readObject();
-                    decks.add(d);
+                    dtemp = (Deck) oi.readObject();
+                    decks.add(dtemp);
                     oi.close();
                     fi.close();
                 } catch (IOException ioe) {
@@ -81,7 +86,7 @@ public class WindowShowDecks {
             }
         };
 
-        JTable table = new JTable(tableModel);
+        table = new JTable(tableModel);
         for (Deck d :decks){
             name = d.getName();
             description = d.getDescription();
@@ -129,17 +134,36 @@ public class WindowShowDecks {
         buttonShowDeck.setText("Ver mazo");
         buttonShowDeck.setBounds(200,400,100,30);
         contentPanel.add(buttonShowDeck);
-
         ActionListener actionButtonShowDeck = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Deck deck;
                 if(e.getSource()==buttonShowDeck){
-                    showDeck.dispose();
-                    WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck();
+                    deck = recoverDeck();
+                    if(deck.getName().equals("")){
+                        JOptionPane.showMessageDialog(showDeck, "No seleccionaste un mazo");
+                    }
+                    else {
+                        showDeck.dispose();
+                        WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck(deck);
+                    }
                 }
             }
         };
         buttonShowDeck.addActionListener(actionButtonShowDeck);
     }
-
+    private Deck recoverDeck(){
+        try {
+            String name = table.getModel().getValueAt(table.getSelectedRow(), 0).toString();
+            String description = table.getModel().getValueAt(table.getSelectedRow(), 1).toString();
+            for(Deck d : decks){
+                if(d.getName().equals(name) && d.getDescription().equals(description)){
+                    return d;
+                }
+            }
+        }catch (Exception e) {
+            System.out.println("Selecciona un mazo");
+        }
+        return new Deck();
+    }
 }

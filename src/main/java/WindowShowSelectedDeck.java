@@ -11,7 +11,21 @@ public class WindowShowSelectedDeck {
     private JButton buttonBack = new JButton("Volver");
     private JButton buttonStudyDeck = new JButton("Estudiar");
     private JButton buttonNewFlashcard = new JButton("Nuevo Flashcard");
+    private Deck selectedDeck;
 
+    WindowShowSelectedDeck(Deck selectedDeck) {
+        this.selectedDeck = selectedDeck;
+        showSelectedDeck = new JFrame();
+        showSelectedDeck.setSize(500, 500);
+        showSelectedDeck.setLocationRelativeTo(null);
+        showSelectedDeck.setVisible(true);
+        showSelectedDeck.setLayout(null);
+        showSelectedDeck.setResizable(false);
+        showSelectedDeck.setContentPane(contentPanel);
+        contentPanel.setLayout(null);
+        startsComponents();
+        showSelectedDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
     WindowShowSelectedDeck() {
         showSelectedDeck = new JFrame();
         showSelectedDeck.setSize(500, 500);
@@ -21,12 +35,9 @@ public class WindowShowSelectedDeck {
         showSelectedDeck.setResizable(false);
         showSelectedDeck.setContentPane(contentPanel);
         contentPanel.setLayout(null);
-
         startsComponents();
-
         showSelectedDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
     private void startsComponents() {
         addTitleOfWindow();
         addButtonStudyDeck();
@@ -47,7 +58,7 @@ public class WindowShowSelectedDeck {
         contentPanel.add(title);
 
         nameDeck.setBounds(100, 100, 300, 20);
-        nameDeck.setText("Nombre del mazo");
+        nameDeck.setText(selectedDeck.getName());
         nameDeck.setFont(new Font("cooper black", 1, 20));
         contentPanel.add(nameDeck);
     }
@@ -74,7 +85,7 @@ public class WindowShowSelectedDeck {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==buttonNewFlashcard){
                     showSelectedDeck.dispose();
-                    WindowNewFlashcard windowNewFlashcard = new WindowNewFlashcard();
+                    WindowNewFlashcard windowNewFlashcard = new WindowNewFlashcard(selectedDeck);
                 }
             }
         };
