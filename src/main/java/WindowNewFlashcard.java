@@ -13,8 +13,9 @@ public class WindowNewFlashcard {
     private JTextArea areaAnswer = new JTextArea();
     private JButton buttonSave = new JButton("Guardar");
     private JButton buttonBack = new JButton("Volver");
-
-    WindowNewFlashcard(){
+    private Deck fdeck;
+    WindowNewFlashcard(Deck fdeck){
+        this.fdeck = fdeck;
         showNewFlashcard = new JFrame();
         showNewFlashcard.setSize(500, 500);
         showNewFlashcard.setLocationRelativeTo(null);
@@ -94,7 +95,7 @@ public class WindowNewFlashcard {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource()==buttonBack){
                     showNewFlashcard.dispose();
-                    WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck();
+                    WindowShowSelectedDeck windowShowSelectedDeck = new WindowShowSelectedDeck(fdeck);
                 }
             }
 
