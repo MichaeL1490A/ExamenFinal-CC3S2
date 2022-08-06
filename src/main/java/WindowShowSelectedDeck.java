@@ -6,15 +6,15 @@ import java.awt.event.ActionListener;
 public class WindowShowSelectedDeck {
     private JFrame showSelectedDeck;
     private JPanel contentPanel = new JPanel();
-    private JLabel titleShowDeck = new JLabel("Mazo");
+    private JLabel title = new JLabel("Mazo");
     private JLabel nameDeck = new JLabel();
     private JButton buttonBack = new JButton("Volver");
-
     private JButton buttonStudyDeck = new JButton("Estudiar");
+    private JButton buttonNewFlashcard = new JButton("Nuevo Flashcard");
 
-    WindowShowSelectedDeck(){
+    WindowShowSelectedDeck() {
         showSelectedDeck = new JFrame();
-        showSelectedDeck.setSize(500,500);
+        showSelectedDeck.setSize(500, 500);
         showSelectedDeck.setLocationRelativeTo(null);
         showSelectedDeck.setVisible(true);
         showSelectedDeck.setLayout(null);
@@ -27,37 +27,67 @@ public class WindowShowSelectedDeck {
         showSelectedDeck.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void startsComponents(){
+    private void startsComponents() {
         addTitleOfWindow();
         addButtonStudyDeck();
         addButtonBack();
+        addButtonNewFlashcard();
 
     }
 
-    private void addTitleOfWindow(){
+    private void addTitleOfWindow() {
         ImageIcon iconImage = new ImageIcon("Media/icon.png");
         JLabel icon = new JLabel();
-        icon.setBounds(80,30,40,50);
+        icon.setBounds(80, 30, 40, 50);
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
         contentPanel.add(icon);
 
-        titleShowDeck.setBounds(140,30,380,50);
-        titleShowDeck.setFont(new Font("cooper black",1,40));
-        contentPanel.add(titleShowDeck);
+        title.setBounds(140, 30, 380, 50);
+        title.setFont(new Font("cooper black", 1, 40));
+        contentPanel.add(title);
 
-        nameDeck.setBounds(100,100,300,20);
+        nameDeck.setBounds(100, 100, 300, 20);
         nameDeck.setText("Nombre del mazo");
-        nameDeck.setFont(new Font("cooper black",1,20));
+        nameDeck.setFont(new Font("cooper black", 1, 20));
         contentPanel.add(nameDeck);
     }
 
-    private void addButtonBack(){
-        buttonBack.setBounds(300,400,100,30);
+    private void addButtonStudyDeck() {
+        buttonStudyDeck.setBounds(100, 400, 100, 30);
+        contentPanel.add(buttonStudyDeck);
+        ActionListener actionButtonStudyDeck = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == buttonStudyDeck) {
+                    showSelectedDeck.dispose();
+                    WindowStudyDeck windowStudyDeck = new WindowStudyDeck();
+                }
+            }
+        };
+        buttonStudyDeck.addActionListener(actionButtonStudyDeck);
+    }
+    private void addButtonNewFlashcard(){
+        buttonNewFlashcard.setBounds(200,400,100,30);
+        contentPanel.add(buttonNewFlashcard);
+        ActionListener actionButtonNewFlashcard = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonNewFlashcard){
+                    showSelectedDeck.dispose();
+                    WindowNewFlashcard windowNewFlashcard = new WindowNewFlashcard();
+                }
+            }
+        };
+        buttonNewFlashcard.addActionListener(actionButtonNewFlashcard);
+    }
+
+    private void addButtonBack() {
+        buttonBack.setBounds(300, 400, 100, 30);
         contentPanel.add(buttonBack);
         ActionListener actionButtonBack = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonBack){
+                if (e.getSource() == buttonBack) {
                     showSelectedDeck.dispose();
                     WindowShowDecks windowShowDecks = new WindowShowDecks();
                 }
@@ -66,20 +96,4 @@ public class WindowShowSelectedDeck {
         };
         buttonBack.addActionListener(actionButtonBack);
     }
-
-    private void addButtonStudyDeck(){
-        buttonStudyDeck.setBounds(100,400,100,30);
-        contentPanel.add(buttonStudyDeck);
-        ActionListener actionButtonStudyDeck = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonStudyDeck){
-                    showSelectedDeck.dispose();
-                    WindowStudyDeck windowStudyDeck = new WindowStudyDeck();
-                }
-            }
-        };
-        buttonStudyDeck.addActionListener(actionButtonStudyDeck);
-    }
-
 }

@@ -8,16 +8,11 @@ import java.io.ObjectOutputStream;
 
 public class WindowCreateDeck{
     private JFrame createDeck;
-    private JLabel titleCreateDeck;
+    private JLabel title;
     private JLabel nameDeck;
     private JLabel descriptionDeck;
     private JButton buttonMain;
     private JButton buttonSave;
-    /*MOVER A MOSTRAR MAZOS
-    private JTextField textQuestion;
-    private JTextField textAnswer;
-
-     */
     private JTextField fieldNameDeck;
     private JTextField fieldDescriptionDeck;
     WindowCreateDeck(){
@@ -45,10 +40,10 @@ public class WindowCreateDeck{
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
         createDeck.add(icon);
 
-        titleCreateDeck = new JLabel("CREAR MAZO");
-        titleCreateDeck.setBounds(140,30,300,50);
-        titleCreateDeck.setFont(new Font("cooper black",1,40));
-        createDeck.add(titleCreateDeck);
+        title = new JLabel("CREAR MAZO");
+        title.setBounds(140,30,300,50);
+        title.setFont(new Font("cooper black",1,40));
+        createDeck.add(title);
     }
 
     private void addNameOfDeck(){
@@ -67,28 +62,6 @@ public class WindowCreateDeck{
         fieldDescriptionDeck.setBounds(200, 150, 200, 35);
         createDeck.add(fieldDescriptionDeck);
     }
-
-    /*MOVER A MOSTRAR MAZOS
-    private void addQuestion(){
-        JLabel labelQuestion = new JLabel("Pregunta: ");
-        labelQuestion.setBounds(50,150,200,50);
-        createDeck.add(labelQuestion);
-        textQuestion = new JTextField();
-        textQuestion.setBounds(200,150,200,35);
-        createDeck.add(textQuestion);
-    }
-
-    private void addAnswer(){
-        JLabel labelAnswer = new JLabel("Respuesta: ");
-        labelAnswer.setBounds(50,200,200,50);
-        createDeck.add(labelAnswer);
-
-        textAnswer = new JTextField();
-        textAnswer.setBounds(200,200,200,35);
-        createDeck.add(textAnswer);
-    }
-
-     */
 
     public void makeDeck(){
         /*MOVER A MOSTRAR MAZOS AGREGAR TARJETA

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class WindowShowDecks {
     private JFrame showDeck;
-    private JLabel titleShowDeck = new JLabel("Tus mazos");
+    private JLabel title = new JLabel("Tus mazos");
     private JPanel contentPanel = new JPanel();
     private JButton buttonMain = new JButton("Inicio");
 
@@ -42,9 +42,9 @@ public class WindowShowDecks {
         icon.setIcon(new ImageIcon(iconImage.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH)));
         contentPanel.add(icon);
 
-        titleShowDeck.setBounds(140,30,380,50);
-        titleShowDeck.setFont(new Font("cooper black",1,40));
-        contentPanel.add(titleShowDeck);
+        title.setBounds(140,30,380,50);
+        title.setFont(new Font("cooper black",1,40));
+        contentPanel.add(title);
     }
     public void JTable1() {
         ObjectInputStream input;
